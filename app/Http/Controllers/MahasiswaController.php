@@ -7,6 +7,7 @@ use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Models\Mahasiswa_Matakuliah;
 
 
 class MahasiswaController extends Controller
@@ -174,5 +175,13 @@ class MahasiswaController extends Controller
 
         //mengirim data ke view index   
         return view('mahasiswa.index',['mahasiswa'=>$mahasiswa]);
+    }
+
+    public function nilai($id)
+    {
+        //menampilkan detail nilai dengan berdasarkan Nim Mahasiswa
+        $nilai=Mahasiswa_Matakuliah::with('matakuliah')->where('id_mahasiswa', $id)->get();
+        $nilai->mahasiswa=Mahasiswa::with('kelas')->where('id_mahasiswa', $id)->first();
+        return view('mahasiswa.nilai', compact('nilai'));
     }
 };  
