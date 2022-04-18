@@ -12,6 +12,7 @@
             </div>
 
             <div class="row mb-2">
+                <a style="float: right" href="/mahasiswa/nilai/{{ $nilai->mahasiswa->nim }}/pdf" target="_blank" class="btn btn-success">Cetak KHS</a>
                 <ul class="" style="list-style-type: none;">
                     <li class=""><b>Nama: </b>{{$nilai->mahasiswa->nama}}</li>
                     <li class=""><b>Nim: </b>{{$nilai->mahasiswa->nim}}</li>
